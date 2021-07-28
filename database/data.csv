@@ -1,0 +1,2 @@
+id,txnId,validationNumber,amount,customerName,revenueHead,bankName,paymentMethod,paymentDate,processed,created_at,updated_at
+1,660174163408245,23456678909877766,4741600.0,"Nura Yii",Pay-as-you-earn(PAYE),taj,cashier,2020-08-11:20:00:00,0,"2021-07-27 05:34",
