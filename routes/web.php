@@ -16,6 +16,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/', function () use ($router){
+    phpinfo();
+})
+
 $router->post('/hook', [
     'as' => 'hook', 'uses'=>'HookController@createTransaction'
 ]);
