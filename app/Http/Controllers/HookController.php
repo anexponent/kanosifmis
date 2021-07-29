@@ -22,6 +22,7 @@ class HookController extends Controller
         $content = $request->all();
         if($content['code'] == 200){
             $data = $content['data'];
+            $qdate = (new \DateTime($data['paymentDate']))->format('Y-m-d');
             $insert = [
                 'txnId'=>$data['txnId'],
                 'validationNumber'=>$data['validationNumber'],
@@ -31,6 +32,7 @@ class HookController extends Controller
                 'bankName'=>$data['bankName'],
                 'paymentMethod'=>$data['paymentMethod'],
                 'paymentDate'=>$data['paymentDate'],
+                'qdate' => $qdate,
                 'created_at' => date("Y-m-d h:i"),
             ];
             if (DB::table('transactions')->insertOrIgnore($insert)){

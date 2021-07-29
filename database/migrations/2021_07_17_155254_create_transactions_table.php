@@ -23,7 +23,8 @@ class CreateTransactionsTable extends Migration
             $table->string('revenueHead');
             $table->string('bankName');
             $table->string('paymentMethod');
-            $table->dateTime('paymentDate');
+            $table->datetime('paymentDate');
+            $table->date('qdate');
             $table->boolean('processed')->default(0);
             $table->timestamps();
         });
