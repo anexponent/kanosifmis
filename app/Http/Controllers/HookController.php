@@ -20,8 +20,9 @@ class HookController extends Controller
 
     public function createTransaction(Request $request){
         $content = $request->all();
+        // print_r($content['data'][0]['paymentDate']); die();
         if($content['code'] == 200){
-            $data = $content['data'];
+            $data = $content['data'][0];
             $qdate = (new \DateTime($data['paymentDate']))->format('Y-m-d');
             $insert = [
                 'txnId'=>$data['txnId'],
@@ -34,6 +35,7 @@ class HookController extends Controller
                 'paymentDate'=>$data['paymentDate'],
                 'qdate' => $qdate,
                 'created_at' => date("Y-m-d h:i"),
+                'mda' => $data['mdaName'],
             ];
             if (DB::table('transactions')->insertOrIgnore($insert)){
                 return response()->json('OK', 200);
